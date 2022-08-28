@@ -1,0 +1,9 @@
+1) Clonar o repositório da oracle de imagens docker
+git clone https://github.com/oracle/docker-images.git
+
+2) Ir na pasta "OracleDatabase/SingleInstance/dockerfiles/21.3.0/" e abrir o arquivo "Dockerfile.xe'
+3) Executar o comando no arquivo "docker build -t oracle/database:21.3.0-xe -f Dockerfile.xe .", e aguardar. Vai demorar, mas vai.
+4) Executar o container: "docker run --name oracle21xe -p 1521:1521 -p 5500:5500 -e ORACLE_PWD=masterdba -e ORACLE_CHARACTERSET=AL32UTF8 -v C:\docker\volumes\oracle21xe:/opt/oracle/oradata oracle/database:21.3.0-xe"
+5) Espera um bocado e pronto
+
+
