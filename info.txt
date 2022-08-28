@@ -1,0 +1,53 @@
+Para reorganizr os índices
+- alter index [nome_do_indice] rebuild
+
+Consultando índices de um usuário
+- select * from user_indexes
+- select * from user_ind_columns
+
+Sinonimos
+- create synonim [nome] for [tabela]
+- Somente o dba (usuário SYS), pode criar sinonimos publicos
+-- create public synonim [nome] for [usuario.tabela] -> valerá para todos os usuários
+
+Executando pelo console (sqlplus)
+- sqlplus [usuario]/[senha]@[service_name_or_SID]
+- Para ver a estrutura da tabela 
+-- DESC [tabela]
+- O último comando do sqlplus,fica em um buffer
+-- LIST
+- Para editar o comando do buffer do sql plus (vai jogar o último comando no editor de texto padrão do sistema)
+- EDIT
+- Para salvar o buffer em um arquivo
+-- SAVE [arquivo].sql
+-- Esse arquivo assim como o buffer, ficará salvo no diretório que foi chamado o sqlplus
+- Para sair do sqlplus sem desconectar
+-- HOST
+- Para retornar ao sqlplus
+-- exit
+- Para direcionar a saída de um comando sql para um arquivo spool
+1) Criar a SPOOL
+--> SPOOL arquivo.txt (tudo que será executado irá para a tela e para esse arquivo)
+2) Fechar o SPOOL
+--> SPOOL OFF
+- Para definir varíaveis, semelhante ao DEFINE, no sqlplus
+-- ACCEPT
+--1) Cria o arquivo: EDIT arquivo.sql
+--2) No arquivo, por exemplo (sem os traços): 
+------------------------------------------------
+ACCEPT pnome PROMPT 'Digite o primeiro nome do empregado:'
+SELECT employee_id, first_name, last_name 
+FROM employees
+WHERE first_name = '&pnome'
+------------------------------------------------
+--3) Para executar
+@arquivo.sql
+
+- Variáveis de ambientes do sqlplus
+-- Todas as variaveis de ambiente e seus valores default = show all
+-- Valor default de determinada variável = show variavel
+-- Para mudar o valor de uma variável = SET variavel valor
+-- A variável pause define se vai mostrar todos os resultados de uma vez ou a cada enter
+
+- Para terminar a sessão de forma normal
+-- exit ou quit
